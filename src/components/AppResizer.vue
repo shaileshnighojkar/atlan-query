@@ -33,11 +33,13 @@ onMounted(() => {
 .app-resizer {
   width: 100%;
   height: 14px;
-  background: black;
+  background: gray;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  flex-shrink: 0;
 
   &::before {
     content: '';

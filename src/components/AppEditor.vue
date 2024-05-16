@@ -1,8 +1,21 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, shallowRef } from 'vue'
 import AppResizer from './AppResizer.vue'
+import VueMonacoEditor from '@guolao/vue-monaco-editor'
 
 const editorHeight = ref(120)
+const MONACO_EDITOR_OPTIONS = {
+  automaticLayout: true,
+  formatOnType: true,
+  formatOnPaste: true,
+  minimap: { enabled: false }
+}
+
+const code = ref('SELECT * FROM users WHERE ID > 10;')
+const editorRef = shallowRef()
+const handleMount = (editor: typeof shallowRef) => {
+  editorRef.value = editor
+}
 
 function onHeightChange(height: number) {
   editorHeight.value = height
@@ -11,7 +24,15 @@ function onHeightChange(height: number) {
 
 <template>
   <div class="app-editor" :style="{ height: editorHeight + 'px' }">
-    <div class="app-editor-text"></div>
+    <div class="app-editor-text">
+      <VueMonacoEditor
+        v-model:value="code"
+        language="sql"
+        theme="vs-dark"
+        :options="MONACO_EDITOR_OPTIONS"
+        @mount="handleMount"
+      />
+    </div>
     <AppResizer @heightChange="onHeightChange" />
   </div>
 </template>
@@ -23,7 +44,6 @@ function onHeightChange(height: number) {
   flex-direction: column;
 
   .app-editor-text {
-    background: red;
     flex-grow: 1;
   }
 }
