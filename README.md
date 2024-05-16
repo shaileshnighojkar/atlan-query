@@ -1,45 +1,31 @@
 # atlan-query
 
-This template should help get you started developing with Vue 3 in Vite.
+## Editor -
 
-## Recommended IDE Setup
+1. Highlighting
+2. Syntax error
+3. Multiple queries - select query to execute by marking the text
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Result display
 
-## Type Support for `.vue` Imports in TS
+1. Tabular format
+2. Show row count
+3. Copy result - export data/result csv, pdf, xlsx
+4. Column selection
+5. Result filter/search
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Other features
 
-## Customize configuration
+1. Query history with undo button
+2. Previous query execution and highliting the query in the editor (or show executed query in another editor - read-only)
+3. Import query
+4. Query file CRUD operations
+5. type assist or type completion
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Ideas
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1. Converting specific query to line or bar chart
+2. Shared file - cloud - access control
+3. Data governance - hide perticular columns
+4. resizeable editor and result windows
+5. Editable result?

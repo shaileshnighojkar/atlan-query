@@ -1,7 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppEditor from './components/AppEditor.vue'
+import AppResult from './components/AppResult.vue'
+</script>
 
 <template>
-  <h1>Atlan Query</h1>
+  <div class="container">
+    <AppEditor />
+    <AppResult />
+  </div>
 </template>
 
-<style></style>
+<style lang="scss">
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 680px;
+  margin: 0px auto;
+  height: 100vh;
+}
+</style>
