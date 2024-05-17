@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import AppEditor from './components/AppEditor.vue'
-import AppResult from './components/AppResult.vue'
+import { ref } from 'vue'
+import ResizableContainer from './components/ResizableContainer.vue'
 </script>
 
 <template>
-  <div class="container">
-    <AppEditor />
-    <AppResult />
-  </div>
+  <ResizableContainer>
+    <template #top>top</template>
+    <template #bottom>bottom</template>
+  </ResizableContainer>
 </template>
 
 <style lang="scss">
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 680px;
+.resizable-container {
+  max-width: 1280px;
   margin: 0px auto;
   height: 100vh;
 }
