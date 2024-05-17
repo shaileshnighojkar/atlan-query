@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import ResizableContainer from './components/ResizableContainer.vue'
 import AppEditor from './components/AppEditor.vue'
 import AppResult from './components/AppResult.vue'
@@ -11,7 +10,7 @@ import AppResult from './components/AppResult.vue'
       <AppEditor></AppEditor>
     </template>
     <template #bottom>
-      <AppResult>showing result</AppResult>
+      <AppResult></AppResult>
     </template>
   </ResizableContainer>
 </template>
@@ -21,5 +20,6 @@ import AppResult from './components/AppResult.vue'
   max-width: 1280px;
   margin: 0px auto;
   height: 100vh;
+  border: 1px solid #353535;
 }
 </style>

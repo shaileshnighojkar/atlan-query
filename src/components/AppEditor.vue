@@ -7,7 +7,8 @@ const MONACO_EDITOR_OPTIONS = {
   automaticLayout: true,
   formatOnType: true,
   formatOnPaste: true,
-  minimap: { enabled: false }
+  minimap: { enabled: false },
+  fontSize: '14px'
 }
 
 const code = ref('SELECT * FROM users WHERE ID > 10;')
@@ -22,7 +23,7 @@ const handleMount = (editor: typeof shallowRef) => {
     class="app-editor"
     v-model:value="code"
     language="sql"
-    theme="vs-dark"
+    theme="vs-light"
     :options="MONACO_EDITOR_OPTIONS"
     @mount="handleMount"
   />
@@ -31,5 +32,6 @@ const handleMount = (editor: typeof shallowRef) => {
 <style lang="scss">
 .app-editor {
   height: 100%;
+  padding-top: 20px;
 }
 </style>

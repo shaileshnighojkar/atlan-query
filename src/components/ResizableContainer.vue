@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const isResizing = ref(false)
-const topHeight = ref(60)
+const topHeight = ref(100)
+const bottomHeight = ref(100)
 const RESIZER_HEIGHT = 14
 
 function onMouseDown(e: MouseEvent) {
@@ -14,25 +15,32 @@ function onMouseDown(e: MouseEvent) {
 
 function onMouseMove(e: MouseEvent) {
   e.preventDefault()
-  topHeight.value = e.clientY - RESIZER_HEIGHT / 2
+  setTopAndBottomSectionHeight(e.clientY)
 }
 
-function onMouseUp(e: MouseEvent) {
+function onMouseUpOrLeave(e: MouseEvent) {
   if (isResizing.value) {
     const container = e.currentTarget as HTMLDivElement
     container?.removeEventListener('mousemove', onMouseMove)
     isResizing.value = false
   }
 }
+
+function setTopAndBottomSectionHeight(clientY: number) {
+  topHeight.value = clientY - RESIZER_HEIGHT / 2
+  bottomHeight.value = window.innerHeight - topHeight.value - RESIZER_HEIGHT
+}
+
+onMounted(() => setTopAndBottomSectionHeight(200))
 </script>
 
 <template>
-  <div class="resizable-container" @mouseup.stop="onMouseUp">
+  <div class="resizable-container" @mouseup="onMouseUpOrLeave" @mouseleave="onMouseUpOrLeave">
     <div class="top-wrapper" :style="{ height: topHeight + 'px' }">
       <slot name="top"></slot>
     </div>
     <div class="resizer" :style="{ height: RESIZER_HEIGHT + 'px' }" @mousedown="onMouseDown"></div>
-    <div class="bottom-wrapper">
+    <div class="bottom-wrapper" :style="{ height: bottomHeight + 'px' }">
       <slot name="bottom"></slot>
     </div>
   </div>
@@ -40,12 +48,6 @@ function onMouseUp(e: MouseEvent) {
 
 <style lang="scss">
 .resizable-container {
-  display: flex;
-  flex-direction: column;
-
-  .top-wrapper {
-  }
-
   .resizer {
     width: 100%;
     background: gray;
@@ -53,10 +55,11 @@ function onMouseUp(e: MouseEvent) {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 
     &::before {
       content: '';
-      width: 44px;
+      width: 64px;
       height: 5px;
       background: white;
       border-radius: 100vw;
@@ -67,10 +70,6 @@ function onMouseUp(e: MouseEvent) {
       cursor: row-resize;
       transition: all 300ms;
     }
-  }
-
-  .bottom-wrapper {
-    flex-grow: 1;
   }
 }
 </style>
