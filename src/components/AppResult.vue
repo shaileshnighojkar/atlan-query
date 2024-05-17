@@ -1,12 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="app-result"></div>
+  <div class="app-result">
+    <slot></slot>
+  </div>
 </template>
 
 <style lang="scss">
 .app-result {
-  flex-grow: 1;
+  height: 100%;
   background: lightsalmon;
 }
 </style>

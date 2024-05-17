@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const isResizing = ref(false)
 const topHeight = ref(60)
-const RESIZER_HEIGHT = 24
+const RESIZER_HEIGHT = 14
 
 function onMouseDown(e: MouseEvent) {
   e.preventDefault()
