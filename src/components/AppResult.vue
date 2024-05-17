@@ -14,11 +14,34 @@ const currentQuery = ref('SELECT * FROM users WHERE ID > 10;')
       <div>Total rows: 224</div>
       <button class="result-btn-export">Export Data</button>
     </div>
-    <ResultTable></ResultTable>
+
+    <div class="test-table">
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+      <div>dkasjdhkashdjkashdhasjdhkaj</div>
+    </div>
+
+    <!-- <ResultTable></ResultTable> -->
   </div>
 </template>
 
 <style lang="scss">
+.test-table {
+  display: flex;
+  gap: 20px;
+  background: lightsalmon;
+  padding: 20px 0px;
+}
+
 .app-result {
   display: flex;
   flex-direction: column;

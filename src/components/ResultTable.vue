@@ -17,13 +17,15 @@ const columns = [
 </script>
 
 <template>
-  <div class="result-table-wrapper">
-    <table>
+  <table class="result-table">
+    <thead>
       <tr>
         <th v-for="column in columns" :key="column.key" :style="column.style">
           {{ column.name }}
         </th>
       </tr>
+    </thead>
+    <tbody>
       <tr v-for="customer in customers" :key="customer.customerID">
         <td>{{ customer.customerID }}</td>
         <td>{{ customer.companyName }}</td>
@@ -37,24 +39,23 @@ const columns = [
         <td>{{ customer.phone }}</td>
         <td>{{ customer.tax }}</td>
       </tr>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </template>
 
 <style lang="scss">
-.result-table-wrapper {
-  // height: 100%;
-  // max-height: 100%;
-  overflow: scroll;
-  flex: 1;
+.result-table {
+  overflow-x: auto;
 
-  table {
-    // display: none;
+  thead {
     tr {
       th {
         text-align: left;
       }
     }
+  }
+  tbody {
+    overflow: scroll;
   }
 }
 </style>

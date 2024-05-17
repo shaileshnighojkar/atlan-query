@@ -19,19 +19,27 @@ const handleMount = (editor: typeof shallowRef) => {
 </script>
 
 <template>
-  <VueMonacoEditor
-    class="app-editor"
-    v-model:value="code"
-    language="sql"
-    theme="vs-light"
-    :options="MONACO_EDITOR_OPTIONS"
-    @mount="handleMount"
-  />
+  <div class="app-editor">
+    <header></header>
+    <VueMonacoEditor
+      class="monaco-editor"
+      v-model:value="code"
+      language="sql"
+      theme="vs-light"
+      :options="MONACO_EDITOR_OPTIONS"
+      @mount="handleMount"
+    />
+  </div>
 </template>
 
 <style lang="scss">
 .app-editor {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding-top: 20px;
+
+  .monaco-editor {
+    height: 100%;
+  }
 }
 </style>
