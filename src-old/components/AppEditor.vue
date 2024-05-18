@@ -11,7 +11,7 @@ const MONACO_EDITOR_OPTIONS = {
   fontSize: '14px'
 }
 
-const code = ref('SELECT * FROM users WHERE ID > 10;\n\n\n\n\n\n\n\n\n\n')
+const code = ref('SELECT * FROM users WHERE ID > 10;')
 const editorRef = shallowRef()
 const handleMount = (editor: typeof shallowRef) => {
   editorRef.value = editor
@@ -33,7 +33,7 @@ const handleMount = (editor: typeof shallowRef) => {
 
 <style lang="scss">
 .app-editor {
-  padding: 12px 24px;
   height: 200px;
+  border-bottom: 1px solid var(--color-primary);
 }
 </style>

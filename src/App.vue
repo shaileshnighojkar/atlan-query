@@ -1,17 +1,28 @@
 <script setup lang="ts">
-import AppHeader from './components/AppHeader.vue'
-import AppSidebar from './components/AppSidebar.vue'
+import { ref } from 'vue'
+import AppEditor from './components/AppEditor.vue'
+import AppTable from './components/AppTable.vue'
+
+const drawer: any = ref(false)
 </script>
 
 <template>
-  <AppHeader></AppHeader>
-  <main>
-    <AppSidebar></AppSidebar>
-  </main>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer">
+      <!--  -->
+    </v-navigation-drawer>
+
+    <v-app-bar>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-app-bar-title>Atlan Query</v-app-bar-title>
+    </v-app-bar>
+
+    <v-main>
+      <AppEditor></AppEditor>
+      <AppTable></AppTable>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-main {
-  flex: 1;
-}
-</style>
+<style lang="scss"></style>
