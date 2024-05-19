@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import customers from '../data/customers'
+import { onMounted } from 'vue'
 
 const columns = [
   { name: 'Customer Id', key: 'customerID', style: { width: '200px' } },
@@ -97,31 +98,56 @@ const boats = [
   }
 ]
 
+const totalRows = 10000
 const virtualBoats = computed(() =>
-  [...Array(10000).keys()].map((i) => {
+  [...Array(totalRows).keys()].map((i) => {
     const boat = { ...boats[i % boats.length] }
     boat.name = `${boat.name} #${i}`
     return boat
   })
 )
+
+// height
+const appTableRef = ref<HTMLDivElement>()
+const virtualTableHeight = ref(300)
+const appTableHeaderHeight = ref(40)
+onMounted(() => {
+  if (appTableRef.value) {
+    virtualTableHeight.value = appTableRef.value.clientHeight - appTableHeaderHeight.value
+  }
+})
 </script>
 
 <template>
-  <div class="app-table">
+  <div class="app-table" ref="appTableRef">
+    <div class="app-table-header" :style="{ height: appTableHeaderHeight }">
+      <div>Total rows: {{ totalRows }}</div>
+    </div>
     <v-data-table-virtual
       :headers="headers"
       :items="virtualBoats"
+      :height="virtualTableHeight"
       fixed-header
-      height="300"
       item-value="name"
-    ></v-data-table-virtual>
+    />
   </div>
 </template>
 
 <style lang="scss">
 .app-table {
-  padding-bottom: 24px;
-  height: 30%;
-  border: 1px solid #333;
+  height: calc(100% - 160px - v-bind(appTableHeaderHeight));
+
+  .v-table {
+    max-height: 100%;
+    overflow-y: scroll;
+    border-bottom: 1px solid #bdb9b9;
+  }
+
+  .app-table-header {
+    padding: 4px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 </style>

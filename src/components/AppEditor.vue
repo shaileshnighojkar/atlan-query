@@ -33,7 +33,8 @@ const handleMount = (editor: typeof shallowRef) => {
 
 <style lang="scss">
 .app-editor {
-  padding: 12px 24px;
-  height: 200px;
+  padding: 12px 24px 12px 0px;
+  height: 160px;
+  border-bottom: 1px solid #c0c0c0;
 }
 </style>
