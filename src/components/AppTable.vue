@@ -25,6 +25,8 @@ const headers = [
   { title: 'Year', align: 'end', key: 'year' }
 ]
 
+const computedHeaders = computed(() => headers.map((header) => ({ ...header, sortable: false })))
+
 const boats = [
   {
     name: 'Speedster',
@@ -113,7 +115,9 @@ const virtualTableHeight = ref(300)
 const appTableHeaderHeight = ref(40)
 onMounted(() => {
   if (appTableRef.value) {
-    virtualTableHeight.value = appTableRef.value.clientHeight - appTableHeaderHeight.value
+    const bottomPadding = 18
+    virtualTableHeight.value =
+      appTableRef.value.clientHeight - appTableHeaderHeight.value - bottomPadding
   }
 })
 </script>
@@ -124,7 +128,7 @@ onMounted(() => {
       <div>Total rows: {{ totalRows }}</div>
     </div>
     <v-data-table-virtual
-      :headers="headers"
+      :headers="computedHeaders"
       :items="virtualBoats"
       :height="virtualTableHeight"
       fixed-header
@@ -135,11 +139,9 @@ onMounted(() => {
 
 <style lang="scss">
 .app-table {
-  height: calc(100% - 160px - v-bind(appTableHeaderHeight));
+  height: calc(100% - 160px);
 
   .v-table {
-    max-height: 100%;
-    overflow-y: scroll;
     border-bottom: 1px solid #bdb9b9;
   }
 

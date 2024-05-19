@@ -11,10 +11,27 @@ const MONACO_EDITOR_OPTIONS = {
   fontSize: '14px'
 }
 
-const code = ref('SELECT * FROM users WHERE ID > 10;\n\n\n\n\n\n\n\n\n\n')
+const SAMPLE_CODE = `/* select query and then press cmd+enter to run the selected query */
+
+SELECT * FROM users WHERE ID > 10;
+
+
+
+
+
+`
+
+const code = ref(SAMPLE_CODE)
 const editorRef = shallowRef()
-const handleMount = (editor: typeof shallowRef) => {
+const handleMount = (editor: any) => {
   editorRef.value = editor
+
+  editor.onKeyDown((event: KeyboardEvent) => {
+    if ((event.metaKey || event.ctrlKey) && event.code === 'Enter') {
+      const selectedCode = editor.getModel().getValueInRange(editor.getSelection())
+      console.log(selectedCode)
+    }
+  })
 }
 </script>
 
