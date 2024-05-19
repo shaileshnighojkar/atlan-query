@@ -8,11 +8,10 @@ const tab = ref('one')
 <template>
   <v-navigation-drawer v-model="drawer">
     <v-card>
-      <v-tabs v-model="tab" density="compact" :show-arrows="false">
+      <v-tabs v-model="tab" grow>
         <v-tab value="one">Tables</v-tab>
         <v-tab value="two">Files</v-tab>
       </v-tabs>
-
       <v-card-text>
         <v-tabs-window v-model="tab">
           <v-tabs-window-item value="one"> Showing all available tables </v-tabs-window-item>

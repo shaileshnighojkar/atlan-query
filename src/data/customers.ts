@@ -1,18 +1,18 @@
-export type Customer = {
-  customerID: string
-  companyName: string
-  contactName: string
-  contactTitle: string
-  address: string
-  city: string
-  region: string
-  postalCode: number | string
-  country: string
-  phone: string
-  fax: string
-}
+export const customerHeaders = [
+  { title: 'Customer ID', key: 'customerID', width: 120, sortable: false },
+  { title: 'Customer Name', key: 'companyName', width: 220, sortable: false },
+  { title: 'Contact Name', key: 'contactName', width: 220, sortable: false },
+  { title: 'Contact Title', key: 'contactTitle', width: 220, sortable: false },
+  { title: 'Address', key: 'address', width: 240, sortable: false },
+  { title: 'City', key: 'city', width: 180, sortable: false },
+  { title: 'Region', key: 'region', width: 180, sortable: false },
+  { title: 'Postal Code', key: 'postalCode', width: 180, sortable: false },
+  { title: 'Country', key: 'country', width: 180, sortable: false },
+  { title: 'Phone', key: 'phone', width: 180, sortable: false },
+  { title: 'Fax', key: 'fax', width: 180, sortable: false }
+]
 
-const customers: Customer[] = [
+export const customerItems = [
   {
     customerID: 'ALFKI',
     companyName: 'Alfreds Futterkiste',
@@ -1197,5 +1197,3 @@ const customers: Customer[] = [
     fax: '(26) 642-7012'
   }
 ]
-
-export default customers
