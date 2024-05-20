@@ -1,13 +1,20 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useResultStore } from '../store/result'
 
 const emit = defineEmits(['runQueryClick'])
 const resultStore = useResultStore()
 
-const columns = resultStore.headers.map((h) => h.title)
+const columns = computed(() => resultStore.headers.map((h) => h.title))
 </script>
 
 <template>
+  <v-tabs density="compact" class="flex-shrink-0">
+    <v-tab>Customer - this week</v-tab>
+    <v-tab>Customer - last week</v-tab>
+    <v-tab min-width="36" style="font-size: 20px; font-weight: 400">+</v-tab>
+  </v-tabs>
+
   <div class="app-controls">
     <div>
       <div v-show="!resultStore.loading" class="app-controls-query">
@@ -18,7 +25,9 @@ const columns = resultStore.headers.map((h) => h.title)
 
     <div class="app-controls-right">
       <!-- Total Rows -->
-      <span class="app-controls-total-rows">Total rows: {{ resultStore.totalRows }}</span>
+      <span class="app-controls-total-rows">
+        Total rows: {{ resultStore.items.length.toLocaleString() }}
+      </span>
 
       <!-- Run Query -->
       <v-btn

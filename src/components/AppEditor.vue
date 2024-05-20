@@ -14,7 +14,6 @@ const MONACO_EDITOR_OPTIONS = {
 }
 
 const SAMPLE_CODE = `/* Select query and then press Ctrl+Enter (Windows) or Cmd+Enter (Mac) to run the selected query */
-
 SELECT * FROM customers WHERE ID > 10;
 SELECT * FROM orders WHERE ID > 10;
 SELECT * FROM products WHERE ID > 10;
@@ -60,7 +59,7 @@ defineExpose({ getQuery })
 
 <style lang="scss">
 .app-editor {
-  padding: 12px 24px 12px 0px;
+  padding: 12px 24px 0px 0px;
   height: 200px;
   border-bottom: 1px solid #c0c0c0;
 }

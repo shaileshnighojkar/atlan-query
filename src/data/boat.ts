@@ -79,7 +79,7 @@ const boats = [
   }
 ]
 
-export const boatItems = [...Array(10000).keys()].map((i) => {
+export const boatItems = [...Array(32_105).keys()].map((i) => {
   const boat = { ...boats[i % boats.length] }
   boat.name = `${boat.name} #${i}`
   return boat
