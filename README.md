@@ -1,6 +1,6 @@
 # atlan-query
 
-SQL query runner application.
+Application for data analyst to manage sql query execution.
 
 ## Walkthough Video
 
