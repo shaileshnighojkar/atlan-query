@@ -23,7 +23,7 @@ Major Plugins/Packages:
 | ---------------- | ------ |
 | requests         | 17     |
 | transferred      | 2.8 MB |
-| resources        | 9.4 MB |
+| resources        | 9.1 MB |
 |                  |        |
 | DOMContentLoaded | 667 ms |
 | Load             | 975 ms |
@@ -44,6 +44,9 @@ Performance: 79
 ## Optimizations
 
 - Using tree-shakable editor
-  - using only sql language package
+  1. monaco-editor: using only sql language package
+  2. vuetify: using only required components
 - Avoiding unnecessary wrappers used only for css placement purpose - less DOM nodes
--
+- Using shallowRef for large dataset where nested reactivity not required, hence "shallow" ref
+- Deployed using amplify to leverage AWS global CDN ie, CloudFront - fast content load.
+- Following general vue standard practice to avoid possible performance issues.
