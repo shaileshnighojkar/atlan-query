@@ -10,7 +10,7 @@ const MONACO_EDITOR_OPTIONS = {
   formatOnType: true,
   formatOnPaste: true,
   minimap: { enabled: false },
-  fontSize: '14px'
+  fontSize: 14
 }
 
 const SAMPLE_CODE = `/* Select query and then press Ctrl+Enter (Windows) or Cmd+Enter (Mac) to run the selected query */
@@ -18,11 +18,7 @@ const SAMPLE_CODE = `/* Select query and then press Ctrl+Enter (Windows) or Cmd+
 SELECT * FROM customers WHERE ID > 10;
 SELECT * FROM orders WHERE ID > 10;
 SELECT * FROM products WHERE ID > 10;
-SELECT * FROM boats;
-
-
-
-`
+SELECT * FROM boats;`
 
 const code = ref(SAMPLE_CODE)
 const editorRef = shallowRef()
@@ -51,7 +47,6 @@ defineExpose({ getQuery })
 
 <template>
   <div class="app-editor">
-    <!-- @vue-ignore -->
     <VueMonacoEditor
       class="monaco-editor"
       v-model:value="code"
@@ -66,7 +61,7 @@ defineExpose({ getQuery })
 <style lang="scss">
 .app-editor {
   padding: 12px 24px 12px 0px;
-  height: 160px;
+  height: 200px;
   border-bottom: 1px solid #c0c0c0;
 }
 </style>

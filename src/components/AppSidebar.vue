@@ -7,8 +7,9 @@ const layoutStore = useLayoutStore()
 const tab = ref('one')
 
 let idRunner = 1
-// @ts-ignore
-const allTableSchema = Object.keys(sampleData).map((dataId) => ({
+
+const dataIds = Object.keys(sampleData) as (keyof typeof sampleData)[]
+const allTableSchema = dataIds.map((dataId) => ({
   id: idRunner++,
   title: dataId,
   children: sampleData[dataId].headers.map((header) => ({
@@ -23,7 +24,8 @@ const sqlFiles = [
     folder: true
   },
   ...Object.keys(sampleData).map((dataId) => ({
-    title: dataId + '.sql'
+    title: dataId + '.sql',
+    folder: false
   }))
 ]
 </script>

@@ -15,14 +15,20 @@ const columns = resultStore.headers.map((h) => h.title)
         <span>{{ resultStore.query }}</span>
       </div>
     </div>
+
     <div class="app-controls-right">
+      <!-- Total Rows -->
       <span class="app-controls-total-rows">Total rows: {{ resultStore.totalRows }}</span>
+
+      <!-- Run Query -->
       <v-btn
         text="Run Query"
         color="primary"
         :disabled="resultStore.loading"
         @click="emit('runQueryClick')"
       />
+
+      <!-- Select Columns -->
       <v-dialog max-width="500">
         <template #activator="{ props }">
           <v-btn v-bind="props" text="Select Columns" />
@@ -53,6 +59,7 @@ const columns = resultStore.headers.map((h) => h.title)
         </template>
       </v-dialog>
 
+      <!-- Export -->
       <v-menu>
         <template #activator="{ props }">
           <v-btn v-bind="props"> Export </v-btn>
@@ -69,7 +76,7 @@ const columns = resultStore.headers.map((h) => h.title)
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 4px 16px;
+  padding: 8px 16px;
 
   .app-controls-query {
     font-size: 0.9rem;

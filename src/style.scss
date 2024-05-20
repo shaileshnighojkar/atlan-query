@@ -13,16 +13,11 @@
 }
 
 html,
-body {
+body,
+#app {
   height: 100%;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
