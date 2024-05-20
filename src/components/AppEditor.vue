@@ -14,13 +14,11 @@ const MONACO_EDITOR_OPTIONS = {
 }
 
 const SAMPLE_CODE = `/* Select query and then press Ctrl+Enter (Windows) or Cmd+Enter (Mac) to run the selected query */
+
 SELECT * FROM customers WHERE ID > 10;
-
 SELECT * FROM orders WHERE ID > 10;
-
 SELECT * FROM products WHERE ID > 10;
-
-
+SELECT * FROM boats;
 
 
 

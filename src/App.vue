@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import AppHeader from './components/AppHeader.vue'
 import AppEditor from './components/AppEditor.vue'
 import AppTable from './components/AppTable.vue'
 import AppControls from './components/AppControls.vue'
 import AppSidebar from './components/AppSidebar.vue'
 import sampleData from './data'
+import { useResultStore } from './store/result'
 
-const drawer: any = ref(false)
 const appEditorRef = ref()
-const headers = ref<any[]>([])
-const items = ref<any[]>([])
-const loading = ref(false)
-
-const onRunQueryClick = () => executeQuery(appEditorRef.value.getQuery())
+const resultStore = useResultStore()
 
 async function executeQuery(query: string) {
-  headers.value = []
-  items.value = []
-  loading.value = true
+  resultStore.query = query
+  resultStore.headers = []
+  resultStore.items = []
+  resultStore.loading = true
 
   // dummy wait - simulating network call
   await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -28,26 +26,20 @@ async function executeQuery(query: string) {
 
   const data = sampleData[dataId]
 
-  // @ts-ignore
-  headers.value = data.headers
-  items.value = data.items
-  loading.value = false
+  resultStore.headers = data.headers
+  resultStore.items = data.items
+  resultStore.loading = false
 }
 </script>
 
 <template>
-  <v-app id="inspire">
-    <AppSidebar v-model="drawer" />
-
-    <v-app-bar>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title>Atlan Query</v-app-bar-title>
-    </v-app-bar>
-
+  <v-app>
+    <AppHeader></AppHeader>
     <v-main>
-      <AppEditor ref="appEditorRef" @run-query="executeQuery"></AppEditor>
-      <AppControls :totalRows="items.length" @run-query-click="onRunQueryClick"></AppControls>
-      <AppTable :headers="headers" :items="items" :loading="loading"></AppTable>
+      <AppSidebar />
+      <AppEditor ref="appEditorRef" @run-query="executeQuery" />
+      <AppControls @run-query-click="() => executeQuery(appEditorRef.getQuery())" />
+      <AppTable />
     </v-main>
   </v-app>
 </template>
