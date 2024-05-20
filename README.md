@@ -24,11 +24,14 @@ Major Plugins/Packages:
 | requests         | 17     |
 | transferred      | 2.8 MB |
 | resources        | 9.4 MB |
-| Finish           | 822 ms |
-| DOMContentLoaded | 255 ms |
-| Load             | 675 ms |
+|                  |        |
+| DOMContentLoaded | 667 ms |
+| Load             | 975 ms |
+| Finish           | 1.03 s |
 
 ### Google Chrome Lighthouse
+
+Performance: 79
 
 |                          |       |
 | ------------------------ | ----- |
@@ -38,4 +41,9 @@ Major Plugins/Packages:
 | Cumulative Layout Shift  | 0.002 |
 | Speed Index              | 1.6 s |
 
-## Any optimisations you did to decrease the load time or increase performance.
+## Optimizations
+
+- Using tree-shakable editor
+  - using only sql language package
+- Avoiding unnecessary wrappers used only for css placement purpose - less DOM nodes
+-
