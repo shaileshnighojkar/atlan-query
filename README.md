@@ -18,3 +18,5 @@ Major Plugins/Packages:
 ## The page load time of your application, and how you measured this time.
 
 ## Any optimisations you did to decrease the load time or increase performance.
+
+Memory Usage: 129MB (on Chrome Mac)
