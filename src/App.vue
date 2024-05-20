@@ -28,6 +28,7 @@ async function executeQuery(query: string) {
 
   const data = sampleData[dataId]
 
+  // @ts-ignore
   headers.value = data.headers
   items.value = data.items
   loading.value = false

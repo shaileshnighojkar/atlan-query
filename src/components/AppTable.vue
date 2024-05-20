@@ -27,6 +27,7 @@ onMounted(() => {
       <div class="mt-3">Fetching results...</div>
     </div>
 
+    <!-- @vue-ignore -->
     <v-data-table-virtual
       v-else
       :headers="props.headers"

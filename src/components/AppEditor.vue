@@ -53,6 +53,7 @@ defineExpose({ getQuery })
 
 <template>
   <div class="app-editor">
+    <!-- @vue-ignore -->
     <VueMonacoEditor
       class="monaco-editor"
       v-model:value="code"
